@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/190/190708.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: url('https://fe.adv.br/wp-content/uploads/2019/01/material-escolar1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        header{
+            background-color: coral;
+            font-size: 20px;
+        }
+        h1{
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 5px;
+        }
+        .formulario{
+            background-color: #00b7ff;
+            width: 350px;
+            height: 500px;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding-top: 10px;
+        }
+        input[type=text]{
+            text-decoration: none;
+            outline: 0;
+            width: 300px;
+            height: 40px;
+            margin-bottom: 20px;
+            margin: 5px 10px 20px 25px;
+            border-radius: 50px;
+            padding: 10px 10px 10px 10px;
+            border: none;
+        }
+        input[type=button]{
+            text-decoration: none;
+            color: white;
+            background-color: #003449;
+            outline: 0;
+            width: 300px;
+            height: 40px;
+            margin-bottom: 20px;
+            margin: 5px 10px 20px 25px;
+            border-radius: 5px;
+            padding: 10px 10px 10px 10px;
+        }
+        input[type=text]:hover, input[type=button]:hover{
+            cursor: pointer;
+        }
+        input[type=text]:focus{
+            font-weight: bold;
+        }
+
+        .resul{
+            float: right;
+            position: relative;
+            top: 250px;
+            left: -270px;
+            font-size: 20px;
+            color: white;
+            max-block-size: 0%;
+        }
+
+    </style>
+
+
+    <script>
+        function calcular(){
+            let materia = document.getElementById('NomeMateria');
+            let nome = document.getElementById('NomeAluno');
+            let nota1 = document.getElementById('nota1');
+            let nota2 = document.getElementById('nota2');
+            let nota3 = document.getElementById('nota3');
+            let nota4 = document.getElementById('nota4');
+            //alert("Media calculada");
+
+            Number(nota1.value)
+            Number(nota2.value)
+            Number(nota3.value)
+            Number(nota4.value)
+
+            let resul = (parseFloat(nota1.value) + parseFloat(nota2.value) + parseFloat(nota3.value) + parseFloat(nota4.value)) / 4;
+            document.getElementById('Resultado').innerHTML = `Resultado: ${resul}!`
+            if(resul > 60){
+                situation = 'Aprovado'
+                document.getElementById('Situação').innerHTML = `Situação: ${situation}!`
+            }
+            else{
+                situation = 'Reprovado'
+                document.getElementById('Situação').innerHTML = `Situação: ${situation}!`
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+    <form action="calcularMedias" method="post" class="formulario" >
+        <h1>Calculadora de nota</h1>
+        <input name="NomeAluno" type="text" placeholder="Nome" id="NomeAluno">
+        <input name="NomeMateria"  type="text" placeholder="Matéria" id="NomeMateria">
+        <input name="nota1" type="text" placeholder="Nota 1°B" id="nota1">
+        <input name="nota2" type="text" placeholder="Nota 2°B" id="nota2">
+        <input name="nota3" type="text" placeholder="Nota 3°B" id="nota3">
+        <input name="nota4" type="text" placeholder="Nota 4°B" id="nota4">
+        <input type="button" onclick="calcular()" value="calcular">
+    </form>
+
+    <div class="resul">
+        <p id="Resultado">Resultado: </p>
+        <p id="Situação">Situação: </p>
+    </div>
+
+</body>
+</html>
